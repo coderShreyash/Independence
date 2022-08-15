@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+  
+  
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBPZFHmTXhe0VIH7JztQ7wia-u2G_cTRoE",
+      authDomain: "india-676da.firebaseapp.com",
+      projectId: "india-676da",
+      storageBucket: "india-676da.appspot.com",
+      messagingSenderId: "184107648504",
+      appId: "1:184107648504:web:e148c77ba5512b2e86020d"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+    <style>
+body{
+    background:url("https://shayarimaza.com/files/flag-images/indian-flag-tiranga-images/Indian-Flag-Wallpaper-HD-Download.jpg");
+    background-size: cover;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    font-size: large;
+}
+    </style>
+  
+</head>
+
+<body>
+    <center>
+    <h1 >Independent India Quiz</h1>
+
+    Enter Your Name:
+    <input type="text" name="name" id="name">
+    <br>
+<button style="margin-top:10px;margin-bottom:-10px;background-color: rgb(0, 4, 128);color:white;font-size:20px;padding: 5px;padding-left:10px;padding-right:10px;border-radius:20px;border-color: aliceblue;" onclick="startq()">Play Quiz</button>
+    
+</center>
+<br>
+<div style="background: rgba(0,0,0,0.5);padding-top: 0.5px;">
+    
+    <center><h2 >Instructions: </h2>
+
+</center>
+<ul style="margin-top: -12px">
+    <li>This Quiz contains 7 questions.</li>
+    <li>Time limit is 60 seconds.</li>
+    <li>Extra points for completing before time.</li>
+    <li>No option to go back to previous question.</li>
+    <li>Share This Quiz with your friends.</li>
+    <br>
+</ul>
+</div>
+<script>
+    name = document.getElementById("name").value
+    var database=firebase.database();
+    users=0;
+    
+    database.ref("/Users").on('value',function(data){users=data.val()})
+
+    function startq(){
+        name = document.getElementById("name").value
+        database.ref("/Users").on('value',function(data){users=data.val()})
+
+        if(name.replaceAll(/\s/g,'').length>0){
+            users++
+           database.ref("/").set({
+Users:users
+           })
+           database.ref("/"+name).set({
+Score:0
+           })
+                    window.open("quiz.html?us="+users+"&name="+name);
+        }
+        else{
+            alert("Please Enter you name !")
+            document.getElementById("name").focus();
+        }
+    }
+</script>
+</body>
+</html>
