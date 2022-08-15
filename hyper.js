@@ -1,3 +1,10 @@
+setInterval(function(){
+        if(localStorage.getItem("Scorer")>=0){
+            window.open("results.html")
+            window.close();
+        }
+    },1000
+    )
 database=firebase.database();
 named=""
 ko=0
