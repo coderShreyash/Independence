@@ -71,7 +71,7 @@
     <script>
         database = firebase.database();
         function shares(){
-        database.ref("/Link").on('value',function(data){
+        database.ref("/Links/link").on('value',function(data){
             links = 'whatsapp://send?text=Challenge Your Knowledge about India by taking this quiz: '+data.val();
             window.open(links)
         })
