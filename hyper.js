@@ -149,11 +149,14 @@ function submitq7(opt){
     localStorage.setItem("Scorer",scorer)
     localStorage.setItem("Quest",st)
     localStorage.setItem("Time",(t7+t6+t5+t4+t3+t2+t1))
-
-    database.ref("/Players/"+named).set({
+    a = new Date();
+    a=a.toString();
+    a=a.slice(0,24)
+    database.ref("/Players/"+named+", "+a).set({
         Score:scorer,
         Ques:st,
-        Time:(t7+t6+t5+t4+t3+t2+t1)
+        Time:(t7+t6+t5+t4+t3+t2+t1),
+        Name:named
         
     })
     window.open("results.html")
