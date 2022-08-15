@@ -1,7 +1,7 @@
 database=firebase.database();
 named=""
 ko=0
-database.ref("/Users").on('value',function(data){
+database.ref("/Users/users").on('value',function(data){
     ko=data.val()
     
 ko=Math.max(Math.floor(Math.log10(Math.abs(ko))), 0) + 11;
@@ -150,7 +150,7 @@ function submitq7(opt){
     localStorage.setItem("Quest",st)
     localStorage.setItem("Time",(t7+t6+t5+t4+t3+t2+t1))
 
-    database.ref("/"+named).set({
+    database.ref("/Players/"+named).set({
         Score:scorer,
         Ques:st,
         Time:(t7+t6+t5+t4+t3+t2+t1)
