@@ -63,19 +63,16 @@ body{
     var database=firebase.database();
     users=0;
     
-    database.ref("/Users").on('value',function(data){users=data.val()})
+    database.ref("/Users/users").on('value',function(data){users=data.val()})
 
     function startq(){
         name = document.getElementById("name").value
-        database.ref("/Users").on('value',function(data){users=data.val()})
+        database.ref("/Users/users").on('value',function(data){users=data.val()})
 
         if(name.replaceAll(/\s/g,'').length>0){
             users++
-           database.ref("/").set({
-Users:users
-           })
-           database.ref("/"+name).set({
-Score:0
+           database.ref("/Users/").set({
+users:users
            })
                     window.open("quiz.html?us="+users+"&name="+name);
         }
