@@ -59,13 +59,7 @@ body{
 </ul>
 </div>
 <script>
-    setInterval(function(){
-        if(localStorage.getItem("Scorer")){
-            window.open("results.html")
-            window.close();
-        }
-    },1000
-    )
+   
     name = document.getElementById("name").value
     var database=firebase.database();
     users=0;
