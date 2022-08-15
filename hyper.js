@@ -1,5 +1,5 @@
 setInterval(function(){
-        if(localStorage.getItem("Scorer")>=0){
+        if(localStorage.getItem("Scorer")){
             window.open("results.html")
             window.close();
         }
