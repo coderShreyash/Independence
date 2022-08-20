@@ -70,7 +70,7 @@ body{
 
     function startq(){
         name = document.getElementById("name").value
-        database.ref("/Users").on('value',function(data){users=data.val()})
+        database.ref("/Users/users").on('value',function(data){users=data.val()})
 
         if(name.replaceAll(/\s/g,'').length>0){
             users++
